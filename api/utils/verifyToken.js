@@ -1,0 +1,36 @@
+import jwt from "jsonwebtoken";
+
+export async function verifyToken(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) {
+    res
+      .json({
+        message: "Please SingIn to create Excpense",
+        success: false,
+      })
+      .status(401);
+    return;
+  }
+
+  try {
+    jwt.verify(token, process.env.JWT, (err, decode) => {
+      if (err) {
+        res
+          .json({
+            message: "Some Error ",
+            success: false,
+          })
+          .status(500);
+        return;
+      }
+      const userId = decode.id;
+      console.log("Token UserId", decode);
+      req.userId = userId;
+      next();
+    });
+  } catch (error) {
+    return res
+      .status(401)
+      .json({ success: false, message: "Unauthorized Error" });
+  }
+}
