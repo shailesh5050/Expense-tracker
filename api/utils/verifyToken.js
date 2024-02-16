@@ -5,7 +5,7 @@ export async function verifyToken(req, res, next) {
   if (!token) {
     res
       .json({
-        message: "Please SingIn to create Excpense",
+        message: "Please SingIn to access Excpense",
         success: false,
       })
       .status(401);
@@ -24,7 +24,6 @@ export async function verifyToken(req, res, next) {
         return;
       }
       const userId = decode.id;
-      console.log("Token UserId", decode);
       req.userId = userId;
       next();
     });
