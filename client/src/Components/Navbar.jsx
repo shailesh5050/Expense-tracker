@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import expense from "../assets/logo-expense-small.png";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const { user } = useSelector((state) => state.user);
   return (
-    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+      <div className="container">
         <Link className="navbar-brand" to="/">
-          Expense
+          <img className="logo" src={expense} alt="Expense" />
         </Link>
         <button
           className="navbar-toggler"
@@ -30,16 +33,19 @@ const Navbar = () => {
                 Expense
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="sign-in">
-                Sign In
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/profile">
-                profile
-              </Link>
-            </li>
+            {user == null ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="sign-in">
+                  Sign In
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">
+                  profile
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
