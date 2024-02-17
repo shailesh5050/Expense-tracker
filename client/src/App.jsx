@@ -1,10 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SIgnUp";
+import PrivateRoute from "./Components/PrivateRoute";
+import Expense from "./Pages/Expense";
 function App() {
   return (
-    <>
-      <div>
-        <h1>Hello...</h1>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/expense" element={<PrivateRoute />}>
+          <Route path="/expense" element={<Expense />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
