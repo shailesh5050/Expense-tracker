@@ -4,9 +4,11 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SIgnUp";
 import PrivateRoute from "./Components/PrivateRoute";
 import Expense from "./Pages/Expense";
+import Navbar from "./Components/Navbar";
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />

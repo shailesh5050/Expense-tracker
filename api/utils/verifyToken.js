@@ -3,12 +3,11 @@ import jwt from "jsonwebtoken";
 export async function verifyToken(req, res, next) {
   const token = req.cookies.token;
   if (!token) {
-    res
-      .json({
-        message: "Please SingIn to access Excpense",
-        success: false,
-      })
-      .status(401);
+    res.status(401).json({
+      message: "Please SingIn to access Excpense",
+      success: false,
+    });
+
     return;
   }
 
