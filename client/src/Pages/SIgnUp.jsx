@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const SIgnUp = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -19,16 +20,16 @@ const SIgnUp = () => {
     const response = await fetch("/api/auth/signup", requestOptions);
     const data = await response.json();
     if (!data.success) {
-      alert(data.message);
+      toast.error(data.message);
     } else {
-      alert(data.message);
+      toast.success(data.message);
       setUser({ username: "", email: "", password: "" });
       navigate("/sign-in");
     }
   }
   return (
-    <div className="row">
-      <div className="col-4 offset-4">
+    <div className="row container-fluid">
+      <div className="col-md-4 col-sm-12 offset-md-4">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label mt-4">Username</label>

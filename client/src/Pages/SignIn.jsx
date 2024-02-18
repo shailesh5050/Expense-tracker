@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess, loginFailure, loginStart } from "../redux/userSlice";
+import toast from "react-hot-toast";
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,18 +22,18 @@ const SignIn = () => {
     const response = await fetch("/api/auth/signin", requestOptions);
     const data = await response.json();
     if (!data.success) {
-      alert(data.message);
+      toast.error(data.message);
       dispatch(loginFailure());
     } else {
-      alert(data.message);
+      toast.success(data.message);
       dispatch(loginSuccess(data));
       setUser({ email: "", password: "" });
       navigate("/expense");
     }
   }
   return (
-    <div className="row">
-      <div className="col-4 offset-4">
+    <div className="row container-fluid">
+      <div className="col-md-4 col-sm-12 offset-md-4">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label mt-4">Email address</label>
@@ -70,7 +71,7 @@ const SignIn = () => {
             Sign Up
           </button>
           <div className="mt-4">
-            <Link to="/sign-in">Already have an account? Sign In</Link>
+            <Link to="/sign-up">dont have an account? Sign Up</Link>
           </div>
         </form>
       </div>

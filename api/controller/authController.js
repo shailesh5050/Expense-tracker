@@ -65,3 +65,10 @@ export async function signIn(req, res) {
     res.json({ message: error.message, success: false }).status(500);
   }
 }
+//signout controller
+export async function signOut(req, res) {
+  res
+    .clearCookie("token")
+    .json({ message: "Sign Out Success", success: true })
+    .status(200);
+}

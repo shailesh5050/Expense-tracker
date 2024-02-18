@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 // eslint-disable-next-line react/prop-types
 const ExpenseForm = ({ setExpenses }) => {
   const [formData, setFormData] = useState({
@@ -20,14 +21,14 @@ const ExpenseForm = ({ setExpenses }) => {
       const data = await res.json();
       setLoading(false);
       if (data.success) {
-        alert(data.message);
+        toast.success(data.message);
         setFormData({ amount: "", description: "" });
         setExpenses((prev) => {
           return [data.expense, ...prev];
         });
       }
     } catch (error) {
-      alert("Error adding expense");
+      toast.error("Error adding expense");
       setLoading(false);
     }
   };
