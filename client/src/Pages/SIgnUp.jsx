@@ -21,6 +21,7 @@ const SIgnUp = () => {
     const data = await response.json();
     if (!data.success) {
       toast.error(data.message);
+      setUser({ username: "", email: "", password: "" });
     } else {
       toast.success(data.message);
       setUser({ username: "", email: "", password: "" });

@@ -27,7 +27,11 @@ const Expense = () => {
           <ExpenseForm setExpenses={setExpenses} />
         </div>
         <div className="col-md-6 col-sm-12">
-          {loading ? <h1>Loading...</h1> : <ExpenseList expenses={expenses} />}
+          {loading ? (
+            <h1>Loading...</h1>
+          ) : (
+            <ExpenseList setExpenses={setExpenses} expenses={expenses} />
+          )}
         </div>
       </div>
     </div>

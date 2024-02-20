@@ -36,19 +36,6 @@ const ExpenseForm = ({ setExpenses }) => {
     <div className="">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="amount">Amount</label>
-          <input
-            type="number"
-            onChange={(e) => {
-              setFormData({ ...formData, amount: e.target.value });
-            }}
-            value={formData.amount}
-            required
-            className="form-control"
-            id="amount"
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="desc">Description</label>
           <input
             type="text"
@@ -59,6 +46,19 @@ const ExpenseForm = ({ setExpenses }) => {
             className="form-control"
             required
             id="desc"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="amount">Amount</label>
+          <input
+            type="number"
+            onChange={(e) => {
+              setFormData({ ...formData, amount: e.target.value });
+            }}
+            value={formData.amount}
+            required
+            className="form-control"
+            id="amount"
           />
         </div>
         <button type="submit" className="btn btn-primary mt-3">

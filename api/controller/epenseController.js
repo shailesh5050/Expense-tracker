@@ -52,10 +52,12 @@ export async function deleteExpense(req, res) {
   const { id } = req.params;
   try {
     const result = await Expense.findByIdAndDelete(id);
+    console.log(result);
     if (result) {
       res.status(200).json({
         message: "Expense deleted successfully",
         success: true,
+        id: result._id,
       });
     } else {
       res.status(404).json({

@@ -68,7 +68,7 @@ const SignIn = () => {
           </div>
 
           <button type="submit" className="btn btn-primary mt-2">
-            Sign Up
+            Sign In
           </button>
           <div className="mt-4">
             <Link to="/sign-up">dont have an account? Sign Up</Link>
